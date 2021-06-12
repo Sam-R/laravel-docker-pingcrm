@@ -1,0 +1,13 @@
+# ARG SOURCE_CONTAINER
+
+# FROM ${SOURCE_CONTAINER} as base
+
+FROM nginx:stable
+
+COPY .docker/nginx/default.conf /etc/nginx/conf.d/default.conf
+
+VOLUME [ "/var/www/html" ]
+
+# # Copy everything else
+# COPY --from=base /var/www/html /var/www/html/
+# #COPY . /var/www/html

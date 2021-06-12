@@ -1,0 +1,36 @@
+version: '3.7'
+
+services:
+  php-fpm:
+    container_name: php-fpm
+    build:
+      context: .
+      dockerfile: .docker/Dockerfile.app
+    environment:
+      APP_KEY: "base64:7vl5DJ3BFjsqzaXpqE1BLk4jofV5JtRCeaPj4Kkczps="
+      DB_CONNECTION: sqlite
+    volumes:
+      - laravel:/var/www/html
+
+  web:
+    depends_on:
+      - php-fpm
+    build:
+      context: .
+      dockerfile: .docker/Dockerfile.web
+      args:
+        SOURCE_CONTAINER: php-fpm:latest
+    ports:
+      - 80:80
+    volumes:
+      - laravel:/var/www/html
+
+  # mysql:
+  #   image: mysql:5.7
+  #   environment:
+  #     - MYSQL_ROOT_PASSWORD:secret
+  #     - MYSQL_DATABASE:laravel
+
+
+volumes:
+  laravel:
