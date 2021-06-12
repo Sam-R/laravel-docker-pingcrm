@@ -2,6 +2,10 @@
 
 A demo of using Docker to run Laravel with Mix to produce production ready docker images.
 
+## What is Ping CRM?
+
+Ping CRM is is a demo app for Inertia.js built using Laravel and Vue. The project's original readme is below.
+
 ## Running the docker containers
 
 `docker-compose up -d` will build and run the Docker containers in `.docker`, one for nginx and the other for PHP-FPM.
@@ -20,10 +24,9 @@ Due to the complexities with tightly copled front and backend code, the PHP-FPM 
 
 This container is not intended for development, but could be used in a CI/CD pipeline with a `--build-arg` to define it's a test environemt in order to pull in PHPunit and pconv for test code coverage.
 
-
 ---
 
-# Ping CRM
+# [Ping CRM](https://github.com/inertiajs/pingcrm)
 
 A demo application to illustrate how Inertia.js works.
 
